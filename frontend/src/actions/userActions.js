@@ -14,7 +14,6 @@ import {
   USER_UPDATE_PROFILE_SUCCESS,
 } from "../constants/userConstants";
 import axios from "axios";
-import { get } from "mongoose";
 
 export const login = (email, password) => async (dispatch) => {
   try {
