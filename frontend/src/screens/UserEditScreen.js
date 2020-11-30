@@ -4,17 +4,19 @@ import { Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { getUserDetails, updateUser } from "../actions/userActions";
 import FormContainer from "../components/FormContainer";
+import { getUserDetails, updateUser } from "../actions/userActions";
 import { USER_UPDATE_RESET } from "../constants/userConstants";
 
-const UserEditScreen = ({ location, history, match }) => {
+const UserEditScreen = ({ match, history }) => {
   const userId = match.params.id;
-  const [email, setEmail] = useState("");
+
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
 
   const dispatch = useDispatch();
+
   const userDetails = useSelector((state) => state.userDetails);
   const { loading, error, user } = userDetails;
 
@@ -38,11 +40,10 @@ const UserEditScreen = ({ location, history, match }) => {
         setIsAdmin(user.isAdmin);
       }
     }
-  }, [dispatch, user, successUpdate, history]);
+  }, [dispatch, history, userId, user, successUpdate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-
     dispatch(updateUser({ _id: userId, name, email, isAdmin }));
   };
 
@@ -58,27 +59,29 @@ const UserEditScreen = ({ location, history, match }) => {
         {loading ? (
           <Loader />
         ) : error ? (
-          <Message variant='danger'></Message>
+          <Message variant='danger'>{error}</Message>
         ) : (
           <Form onSubmit={submitHandler}>
             <Form.Group controlId='name'>
               <Form.Label>Name</Form.Label>
               <Form.Control
-                type='text'
-                placeholder='Enter Name'
+                type='name'
+                placeholder='Enter name'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               ></Form.Control>
             </Form.Group>
+
             <Form.Group controlId='email'>
               <Form.Label>Email Address</Form.Label>
               <Form.Control
                 type='email'
-                placeholder='Enter Email'
+                placeholder='Enter email'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               ></Form.Control>
             </Form.Group>
+
             <Form.Group controlId='isadmin'>
               <Form.Check
                 type='checkbox'

@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { Form, Button, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import FormContainer from "../components/FormContainer";
-import CheckSteps from "../components/CheckSteps";
+import CheckoutSteps from "../components/CheckoutSteps";
 import { savePaymentMethod } from "../actions/cartActions";
 
 const PaymentScreen = ({ history }) => {
   const cart = useSelector((state) => state.cart);
   const { shippingAddress } = cart;
 
-  if (!shippingAddress) {
-    history.psuh("/shipping");
+  if (!shippingAddress.address) {
+    history.push("/shipping");
   }
 
   const [paymentMethod, setPaymentMethod] = useState("PayPal");
@@ -22,9 +22,10 @@ const PaymentScreen = ({ history }) => {
     dispatch(savePaymentMethod(paymentMethod));
     history.push("/placeorder");
   };
+
   return (
     <FormContainer>
-      <CheckSteps step1 step2 step3></CheckSteps>
+      <CheckoutSteps step1 step2 step3 />
       <h1>Payment Method</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group>
@@ -49,6 +50,7 @@ const PaymentScreen = ({ history }) => {
             ></Form.Check> */}
           </Col>
         </Form.Group>
+
         <Button type='submit' variant='primary'>
           Continue
         </Button>

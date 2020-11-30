@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import { Table, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,20 +9,14 @@ import { listUsers, deleteUser } from "../actions/userActions";
 const UserListScreen = ({ history }) => {
   const dispatch = useDispatch();
 
-  const userLogin = useSelector((state) => state.userLogin);
-  const { userInfo } = userLogin;
-
   const userList = useSelector((state) => state.userList);
   const { loading, error, users } = userList;
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
   const userDelete = useSelector((state) => state.userDelete);
   const { success: successDelete } = userDelete;
-
-  const deleteHandler = (id) => {
-    if (window.confirm("Are you sure")) {
-      dispatch(deleteUser(id));
-    }
-  };
 
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
@@ -30,17 +24,23 @@ const UserListScreen = ({ history }) => {
     } else {
       history.push("/login");
     }
-  }, [dispatch, history, userDelete, userInfo]);
+  }, [dispatch, history, successDelete, userInfo]);
+
+  const deleteHandler = (id) => {
+    if (window.confirm("Are you sure")) {
+      dispatch(deleteUser(id));
+    }
+  };
 
   return (
-    <div>
+    <>
       <h1>Users</h1>
       {loading ? (
         <Loader />
       ) : error ? (
         <Message variant='danger'>{error}</Message>
       ) : (
-        <Table striped hover bordered responsive className='table-sm'>
+        <Table striped bordered hover responsive className='table-sm'>
           <thead>
             <tr>
               <th>ID</th>
@@ -84,7 +84,7 @@ const UserListScreen = ({ history }) => {
           </tbody>
         </Table>
       )}
-    </div>
+    </>
   );
 };
 
