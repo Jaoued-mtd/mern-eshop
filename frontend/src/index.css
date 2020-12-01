@@ -35,6 +35,10 @@ h2 {
   color: #fff;
 }
 
+.card-content {
+  min-height: 40vh;
+}
+
 .carousel img {
   height: 300px;
   padding: 30px;
