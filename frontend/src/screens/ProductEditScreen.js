@@ -144,7 +144,7 @@ const ProductEditScreen = ({ match, history }) => {
             </Form.Group>
 
             <Form.Group controlId='brand'>
-              <Form.Label>Marqie</Form.Label>
+              <Form.Label>Marque</Form.Label>
               <Form.Control
                 type='text'
                 placeholder='Entrez la marque'
@@ -176,7 +176,8 @@ const ProductEditScreen = ({ match, history }) => {
             <Form.Group controlId='description'>
               <Form.Label>Description</Form.Label>
               <Form.Control
-                type='text'
+                as='textarea'
+                rows={10}
                 placeholder='Entrez la description'
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
