@@ -27,7 +27,7 @@ const Header = () => {
                 style={{ width: "2rem" }}
                 src='https://i.ibb.co/rZcXMGm/noun-Coffee-Bean-2012.png'
               ></Image>
-              <span className='mt-3 ml-2'>COFFEE ADDICT</span>
+              <span className='mt-3 ml-2'>MY COFFEE</span>
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
@@ -35,8 +35,9 @@ const Header = () => {
             <Route render={({ history }) => <SearchBox history={history} />} />
             <Nav className='ml-auto'>
               <LinkContainer to='/cart'>
-                <Nav.Link>
-                  <i className='fas fa-shopping-cart'></i> Panier
+                <Nav.Link className='d-flex'>
+                  <i className='fas fa-shopping-cart mr-2'></i>
+                  <p>Panier</p>
                 </Nav.Link>
               </LinkContainer>
               {userInfo ? (
@@ -50,13 +51,13 @@ const Header = () => {
                 </NavDropdown>
               ) : (
                 <LinkContainer to='/login'>
-                  <Nav.Link>
-                    <i className='fas fa-user'></i> Connexion
+                  <Nav.Link className='d-flex'>
+                    <i className='fas fa-user mr-2'></i> <p>Connexion</p>
                   </Nav.Link>
                 </LinkContainer>
               )}
               {userInfo && userInfo.isAdmin && (
-                <NavDropdown title='Gestion administrateur' id='adminmenu'>
+                <NavDropdown title='Gestion' id='adminmenu'>
                   <LinkContainer to='/admin/userlist'>
                     <NavDropdown.Item>Utilisateurs</NavDropdown.Item>
                   </LinkContainer>
