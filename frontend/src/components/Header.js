@@ -2,7 +2,7 @@ import React from "react";
 import { Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
-import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav, Container, NavDropdown, Image } from "react-bootstrap";
 import SearchBox from "./SearchBox";
 import { logout } from "../actions/userActions";
 
@@ -21,7 +21,14 @@ const Header = () => {
       <Navbar expand='lg' collapseOnSelect>
         <Container>
           <LinkContainer to='/'>
-            <Navbar.Brand>TECH & SHOP</Navbar.Brand>
+            <Navbar.Brand>
+              {" "}
+              <Image
+                style={{ width: "2rem" }}
+                src='https://i.ibb.co/rZcXMGm/noun-Coffee-Bean-2012.png'
+              ></Image>
+              <span className='mt-3 ml-2'>COFFEE ADDICT</span>
+            </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>

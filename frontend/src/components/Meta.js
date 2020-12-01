@@ -12,9 +12,10 @@ const Meta = ({ title, description, keywords }) => {
 };
 
 Meta.defaultProps = {
-  title: "Bienvenue sur TECH & SHOP",
-  description: "Vente de produit high tech",
-  keywords: "tech, achat tech, vente tech",
+  title: "Bienvenue sur Coffee addict",
+  description:
+    "Votre coffee shop en ligne à la qualité professionnelle, pour votre plus grand plaisir.",
+  keywords: "café, achat café, graine de café",
 };
 
 export default Meta;
