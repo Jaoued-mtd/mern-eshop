@@ -47,7 +47,7 @@ const ProfileScreen = ({ location, history }) => {
   const submitHandler = (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      setMessage("Passwords do not match");
+      setMessage("Les mots de passe ne sont pas identiques");
     } else {
       dispatch(updateUserProfile({ id: user._id, name, email, password }));
     }
@@ -56,10 +56,10 @@ const ProfileScreen = ({ location, history }) => {
   return (
     <Row>
       <Col md={3}>
-        <h2>User Profile</h2>
+        <h2>Votre profil</h2>
         {message && <Message variant='danger'>{message}</Message>}
         {}
-        {success && <Message variant='success'>Profile Updated</Message>}
+        {success && <Message variant='success'>Profil mis à jour</Message>}
         {loading ? (
           <Loader />
         ) : error ? (
@@ -67,53 +67,53 @@ const ProfileScreen = ({ location, history }) => {
         ) : (
           <Form onSubmit={submitHandler}>
             <Form.Group controlId='name'>
-              <Form.Label>Name</Form.Label>
+              <Form.Label>Nom</Form.Label>
               <Form.Control
                 type='name'
-                placeholder='Enter name'
+                placeholder='Entrez votre Nom'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
             <Form.Group controlId='email'>
-              <Form.Label>Email Address</Form.Label>
+              <Form.Label>Email </Form.Label>
               <Form.Control
                 type='email'
-                placeholder='Enter email'
+                placeholder='Entrez votre email'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
             <Form.Group controlId='password'>
-              <Form.Label>Password</Form.Label>
+              <Form.Label>Mot de passe</Form.Label>
               <Form.Control
                 type='password'
-                placeholder='Enter password'
+                placeholder='Entrez votre mot de passe'
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
             <Form.Group controlId='confirmPassword'>
-              <Form.Label>Confirm Password</Form.Label>
+              <Form.Label>Confirmation</Form.Label>
               <Form.Control
                 type='password'
-                placeholder='Confirm password'
+                placeholder='Confirmer votre mot de passe'
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
             <Button type='submit' variant='primary'>
-              Update
+              Modifier
             </Button>
           </Form>
         )}
       </Col>
       <Col md={9}>
-        <h2>My Orders</h2>
+        <h2>Mes commandes</h2>
         {loadingOrders ? (
           <Loader />
         ) : errorOrders ? (
@@ -125,8 +125,8 @@ const ProfileScreen = ({ location, history }) => {
                 <th>ID</th>
                 <th>DATE</th>
                 <th>TOTAL</th>
-                <th>PAID</th>
-                <th>DELIVERED</th>
+                <th>PAIEMENT</th>
+                <th>LIVRAISON</th>
                 <th></th>
               </tr>
             </thead>
@@ -135,7 +135,7 @@ const ProfileScreen = ({ location, history }) => {
                 <tr key={order._id}>
                   <td>{order._id}</td>
                   <td>{order.createdAt.substring(0, 10)}</td>
-                  <td>{order.totalPrice}</td>
+                  <td>{order.totalPrice} €</td>
                   <td>
                     {order.isPaid ? (
                       order.paidAt.substring(0, 10)
@@ -153,7 +153,7 @@ const ProfileScreen = ({ location, history }) => {
                   <td>
                     <LinkContainer to={`/order/${order._id}`}>
                       <Button className='btn-sm' variant='light'>
-                        Details
+                        Détail
                       </Button>
                     </LinkContainer>
                   </td>

@@ -35,7 +35,7 @@ const getProductById = asyncHandler(async (req, res) => {
     res.json(product);
   } else {
     res.status(404);
-    throw new Error("Product not found");
+    throw new Error("Aucun produit");
   }
 });
 
@@ -47,10 +47,10 @@ const deleteProduct = asyncHandler(async (req, res) => {
 
   if (product) {
     await product.remove();
-    res.json({ message: "Product removed" });
+    res.json({ message: "Produit supprimé" });
   } else {
     res.status(404);
-    throw new Error("Product not found");
+    throw new Error("Aucun produit");
   }
 });
 
@@ -59,12 +59,12 @@ const deleteProduct = asyncHandler(async (req, res) => {
 // @access  Private/Admin
 const createProduct = asyncHandler(async (req, res) => {
   const product = new Product({
-    name: "Sample name",
+    name: "Sample nom",
     price: 0,
     user: req.user._id,
     image: "/images/sample.jpg",
-    brand: "Sample brand",
-    category: "Sample category",
+    brand: "Sample marque",
+    category: "Sample categorie",
     countInStock: 0,
     numReviews: 0,
     description: "Sample description",
@@ -103,7 +103,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     res.json(updatedProduct);
   } else {
     res.status(404);
-    throw new Error("Product not found");
+    throw new Error("Aucun produit");
   }
 });
 
@@ -122,7 +122,7 @@ const createProductReview = asyncHandler(async (req, res) => {
 
     if (alreadyReviewed) {
       res.status(400);
-      throw new Error("Product already reviewed");
+      throw new Error("Vous avez déjà posté un avis");
     }
 
     const review = {
@@ -141,10 +141,10 @@ const createProductReview = asyncHandler(async (req, res) => {
       product.reviews.length;
 
     await product.save();
-    res.status(201).json({ message: "Review added" });
+    res.status(201).json({ message: "Avis ajouté avec succès" });
   } else {
     res.status(404);
-    throw new Error("Product not found");
+    throw new Error("Aucun produit");
   }
 });
 

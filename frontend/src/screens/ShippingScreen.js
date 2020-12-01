@@ -25,13 +25,13 @@ const ShippingScreen = ({ history }) => {
   return (
     <FormContainer>
       <CheckoutSteps step1 step2 />
-      <h1>Shipping</h1>
+      <h1>Livraison</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group controlId='address'>
-          <Form.Label>Address</Form.Label>
+          <Form.Label>Adresse</Form.Label>
           <Form.Control
             type='text'
-            placeholder='Enter address'
+            placeholder='Entrez votre adresse'
             value={address}
             required
             onChange={(e) => setAddress(e.target.value)}
@@ -39,10 +39,10 @@ const ShippingScreen = ({ history }) => {
         </Form.Group>
 
         <Form.Group controlId='city'>
-          <Form.Label>City</Form.Label>
+          <Form.Label>Ville</Form.Label>
           <Form.Control
             type='text'
-            placeholder='Enter city'
+            placeholder='Entrez votre ville'
             value={city}
             required
             onChange={(e) => setCity(e.target.value)}
@@ -50,10 +50,10 @@ const ShippingScreen = ({ history }) => {
         </Form.Group>
 
         <Form.Group controlId='postalCode'>
-          <Form.Label>Postal Code</Form.Label>
+          <Form.Label>Code postal</Form.Label>
           <Form.Control
             type='text'
-            placeholder='Enter postal code'
+            placeholder='Entrez votre code postal'
             value={postalCode}
             required
             onChange={(e) => setPostalCode(e.target.value)}
@@ -61,10 +61,10 @@ const ShippingScreen = ({ history }) => {
         </Form.Group>
 
         <Form.Group controlId='country'>
-          <Form.Label>Country</Form.Label>
+          <Form.Label>Pays</Form.Label>
           <Form.Control
             type='text'
-            placeholder='Enter country'
+            placeholder='Entrez votre pays'
             value={country}
             required
             onChange={(e) => setCountry(e.target.value)}
@@ -72,7 +72,7 @@ const ShippingScreen = ({ history }) => {
         </Form.Group>
 
         <Button type='submit' variant='primary'>
-          Continue
+          Continuer
         </Button>
       </Form>
     </FormContainer>
