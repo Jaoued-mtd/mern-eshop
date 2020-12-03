@@ -13,6 +13,7 @@ You can check full demo on : https://coffee-mern.herokuapp.com/
 <p>
 <img src='https://i.ibb.co/dGZSVd9/Capture-d-e-cran-2020-12-03-a-14-51-39.png' width:'800px' alt='detail'>
 </p>
+
 # CART : 
 
 <p><p><p>
@@ -30,6 +31,7 @@ You can check full demo on : https://coffee-mern.herokuapp.com/
 <p>
 <img src='https://i.ibb.co/ncPBbRr/Capture-d-e-cran-2020-12-03-a-14-58-36.png' width:'800px' alt='profile'>
 </p>
+
 # PAYMENT : 
 
 <p>
